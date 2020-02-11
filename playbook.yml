@@ -1,7 +1,12 @@
 ---
 - hosts: local
   roles:
+    - {role: 'packages', tags: 'packages'}
+    - {role: 'common', tags: 'common'}
     - {role: 'git', tags: 'git'}
     - {role: 'google-chrome', tags: 'chrome'}
     - {role: 'vscode', tags: 'vscode'}
     - {role: 'riot', tags: 'riot'}
+    - {role: 'dropbox', tags: 'dropbox'}
+    - {role: 'fish', tags: 'fish'}
+    

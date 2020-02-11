@@ -1,0 +1,12 @@
+---
+- name: "Create ~/bin if not exists"
+  file:
+    path: ~/bin
+    state: directory
+    mode: '0755'
+
+- name: "Create ~/.local/bin if not exists"
+  file:
+    path: ~/.local/bin
+    state: directory
+    mode: '0755'

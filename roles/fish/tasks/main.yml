@@ -1,0 +1,60 @@
+---
+- name: "Install fish package"
+  apt:
+    pkg: fish
+    state: present
+  become: yes
+
+- name: Copy fish config files
+  copy:
+    src: ../files/fish
+    dest: ~/.config
+
+
+- block:
+  - name: Download fzf executable
+    unarchive:
+      src: "https://github.com/junegunn/fzf-bin/releases/download/{{ fzf_version }}/fzf-{{ fzf_version }}-linux_amd64.tgz"
+      dest: ~/bin
+      remote_src: yes
+
+  - name: Download fzf fish keybindings
+    get_url:
+      url: "https://raw.githubusercontent.com/junegunn/fzf/{{ fzf_version }}/shell/key-bindings.fish"
+      dest: ~/.config/fish/functions/fzf_key_bindings.fish
+  name: fzf
+  vars:
+    fzf_version: "0.20.0"
+
+
+- block:
+  - name: Does the starship executable exists?
+    command: test -f ~/bin/starship
+    register: starship_file_exists
+    ignore_errors: True
+    changed_when: "starship_file_exists.rc != 0"
+
+  - name: Download starship installer
+    get_url:
+      url: https://starship.rs/install.sh
+      dest: ~/bin/starship-install.sh
+      mode: "0755"
+    when: 
+      - starship_file_exists.rc == 1
+
+  - name: Install starship into ~/bin
+    command: ~/bin/starship-install.sh -V -y -b ~/bin
+    when: 
+      - starship_file_exists.rc == 1
+
+  - name: Copy starship config files
+    copy:
+      src: ../files/starship.toml
+      dest: ~/.config/starship.toml
+    
+  name: starship
+
+
+- name: "Setup fish as default shell"
+  debug:
+    msg: "FIXME"
