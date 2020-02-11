@@ -3,3 +3,5 @@
   roles:
     - {role: 'git', tags: 'git'}
     - {role: 'google-chrome', tags: 'chrome'}
+    - {role: 'vscode', tags: 'vscode'}
+    - {role: 'riot', tags: 'riot'}

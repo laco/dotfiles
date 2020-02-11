@@ -1,0 +1,9 @@
+---
+- block:
+  - include_tasks: "../../includes/package-with-repo.yml"
+    vars:
+      apt_source_file: /etc/apt/sources.list.d/vscode.list
+      apt_source_content: "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main"
+      apt_key: "https://packages.microsoft.com/keys/microsoft.asc"
+      apt_package: "code"
+  become: yes

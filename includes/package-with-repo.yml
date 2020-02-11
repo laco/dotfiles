@@ -1,0 +1,20 @@
+- name: Does the apt file exist?
+  command: test -f {{apt_source_file}}
+  register: apt_source_file_exists
+  ignore_errors: True
+  changed_when: "apt_source_file_exists.rc != 0"
+
+- name: Add apt key
+  shell: wget -q -O - "{{ apt_key }}" | apt-key add -
+  when: apt_source_file_exists.rc == 1
+
+- name: Add apt repo
+  copy: content="{{ apt_source_content }}" dest={{apt_source_file}} owner=root group=root mode=644
+  when: apt_source_file_exists.rc == 1
+
+- name: Update apt cache
+  apt: update_cache=yes
+  when: apt_source_file_exists.rc == 1
+
+- name: Install package
+  apt: pkg="{{ apt_package }}" state=present

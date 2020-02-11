@@ -1,0 +1,9 @@
+---
+- block:
+  - include_tasks: "../../includes/package-with-repo.yml"
+    vars:
+      apt_source_file: /etc/apt/sources.list.d/riot-im.list
+      apt_source_content: "deb https://packages.riot.im/debian/ bionic main"
+      apt_key: "https://packages.riot.im/debian/riot-im-archive-keyring.gpg"
+      apt_package: "riot-web"
+  become: yes

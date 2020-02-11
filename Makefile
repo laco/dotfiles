@@ -1,3 +1,3 @@
 install:
-	ansible-playbook ./playbook.yml --ask-become-pass --vault-password-file ~/.vault_password
+	ansible-playbook ./playbook.yml --ask-become-pass --vault-password-file ~/.personal_vault_password
 
