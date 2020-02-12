@@ -10,6 +10,7 @@
       - vim
       - net-tools
       - curl
+      - fonts-powerline
     state: present
   become: yes
       
