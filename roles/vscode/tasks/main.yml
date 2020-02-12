@@ -7,3 +7,9 @@
       apt_key: "https://packages.microsoft.com/keys/microsoft.asc"
       apt_package: "code"
   become: yes
+
+- name: "Symlink User settings.json"
+  file:
+    src: "{{ role_path }}/files/settings.json"
+    dest: ~/.config/Code/User/settings.json
+    state: link
