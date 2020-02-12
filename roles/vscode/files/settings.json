@@ -5,5 +5,7 @@
         "editor.autoIndent": "advanced"
       },
       "zenMode.hideLineNumbers": false,
-      "zenMode.fullScreen": false
+      "zenMode.fullScreen": false,
+      "workbench.colorTheme": "Sunburst",
+      "files.trimTrailingWhitespace": true
 }

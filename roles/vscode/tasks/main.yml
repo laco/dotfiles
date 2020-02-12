@@ -13,3 +13,16 @@
     src: "{{ role_path }}/files/settings.json"
     dest: ~/.config/Code/User/settings.json
     state: link
+
+- name: "Install extensions"
+  command: "code --install-extension {{ item }}"
+  register: extension_install_result
+  changed_when: false
+  with_items:
+    - gerane.Theme-Sunburst
+    - betterthantomorrow.calva
+    - vscode-org-mode.org-mode
+
+- name: Any new extension installed?
+  debug:
+    msg: "{{ 'was successfully installed.' in extension_install_result.results | map(attribute='stdout')  | join('\n')  }}"
