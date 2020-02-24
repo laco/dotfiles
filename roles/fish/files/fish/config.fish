@@ -1,5 +1,5 @@
 # Adding extra bin folders to PATH
-set -x PATH $PATH $HOME/bin/ $HOME/.local/bin/ /snap/bin
+set -x PATH $PATH $HOME/bin/ $HOME/.local/bin/ $HOME/opt/python/bin /snap/bin
 
 # Install and bootstrap fisher packages
 if not functions -q fisher

@@ -1,0 +1,82 @@
+---
+- name: Update apt cache
+  apt: update_cache=true cache_valid_time=86400
+  become: yes
+
+- name: "Install required packages for build python from source"
+  apt:
+    pkg:
+      - build-essential
+      - zlib1g-dev
+      - libncurses5-dev
+      - libgdbm-dev
+      - libnss3-dev
+      - libssl-dev
+      - libreadline-dev
+      - libffi-dev
+      - wget
+    state: present
+  become: yes
+
+- name: Create ~/work/python-src folder if missing
+  file:
+    path: ~/work/python-src
+    state: directory
+    recurse: yes
+
+- name: Create ~/opt/python folder if missing
+  file:
+    path: ~/work/python-src
+    state: directory
+    recurse: yes
+
+- name: Download, compile and install python
+  vars:
+    python_major_version: 3.7
+    python_version: 3.7.4
+  block:
+
+  - name: python binary exists?
+    command: "~/opt/python/bin/python{{ python_major_version }} --version"
+    register: installed_python_version
+    ignore_errors: True
+    tags: wip
+
+  - command:
+      cmd: /bin/true
+    register: needs_install
+    when:
+      - (installed_python_version.rc != 0) or (python_version not in installed_python_version.stdout)
+
+  - name: source directory exists?
+    command: "test -d ~/work/python-src/Python-{{ python_version }}"
+    register: source_directory_exists
+    ignore_errors: True
+    changed_when: "source_directory_exists.rc != 0"
+
+
+  - name: "Download python source and extract it"
+    unarchive:
+      src: "https://www.python.org/ftp/python/{{ python_version }}/Python-{{ python_version }}.tgz"
+      dest: ~/work/python-src/
+      remote_src: yes
+    when: source_directory_exists.rc == 1
+
+  - name: "Configure"
+    shell:
+      cmd: "make clean; ./configure --prefix=$HOME/opt/python"
+      chdir: "~/work/python-src/Python-{{ python_version }}"
+    when: needs_install is defined
+
+  - name: "make"
+    command:
+      cmd: "make -j4"
+      chdir: "~/work/python-src/Python-{{ python_version }}"
+    when: needs_install is defined
+
+  - name: "make altinstall"
+    command:
+      cmd: "make altinstall"
+      chdir: "~/work/python-src/Python-{{ python_version }}"
+    when: needs_install is defined
+

@@ -22,6 +22,8 @@
     - gerane.Theme-Sunburst
     - betterthantomorrow.calva
     - vscode-org-mode.org-mode
+    - skyapps.fish-vscode
+    - lunaryorn.fish-ide
 
 - name: Any new extension installed?
   debug:
