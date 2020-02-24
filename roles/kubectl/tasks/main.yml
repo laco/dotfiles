@@ -1,0 +1,23 @@
+---
+- name: "Install kubectl & krew"
+  shell: "{{ item }}"
+  args:
+    executable: /usr/bin/fish
+    chdir: /tmp
+  loop:
+    - l-update-kubectl
+    - l-update-krew
+
+- name: "Update krew's local index"
+  shell: kubectl krew update
+  args:
+    executable: /usr/bin/fish
+
+- name: "Install kubectl plugins with kubectl-krew"
+  shell: "kubectl krew install {{ item }}"
+  args:
+    executable: /usr/bin/fish
+  loop:
+    - "get-all"
+
+

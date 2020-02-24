@@ -6,7 +6,7 @@ My development environment setup in Ansible playbooks
 
 - Ubuntu 18.04 LTS
 - A user account with sudo (`laco`)
-- ansible-vault password stored in ~/.personal_vault_password 
+- ansible-vault password stored in ~/.personal_vault_password
 
 ## Install Ansible on Ubuntu
 
