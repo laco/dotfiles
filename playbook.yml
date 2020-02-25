@@ -9,5 +9,5 @@
     - {role: 'riot', tags: 'riot'}
     - {role: 'dropbox', tags: 'dropbox'}
     - {role: 'fish', tags: 'fish'}
-    # - {role: 'python-src', tags: 'python-src'}
+    - {role: 'python-src', tags: 'python-src'}
     - {role: 'kubectl', tags: 'kubectl'}
