@@ -24,7 +24,11 @@
     - vscode-org-mode.org-mode
     - skyapps.fish-vscode
     - lunaryorn.fish-ide
-
+    - ms-python.python
+    - ms-azuretools.vscode-docker
+    - humao.rest-client
+    - brunnerh.insert-unicode
+ 
 - name: Any new extension installed?
   debug:
     msg: "{{ 'was successfully installed.' in extension_install_result.results | map(attribute='stdout')  | join('\n')  }}"

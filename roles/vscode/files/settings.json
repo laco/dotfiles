@@ -7,5 +7,6 @@
       "zenMode.hideLineNumbers": false,
       "zenMode.fullScreen": false,
       "workbench.colorTheme": "Sunburst",
-      "files.trimTrailingWhitespace": true
+      "files.trimTrailingWhitespace": true,
+      "[python]": {}
 }
