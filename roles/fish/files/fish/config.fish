@@ -4,6 +4,7 @@ set -x PATH $PATH \
     $HOME/.local/bin/ \
     $HOME/opt/python/bin \
     $HOME/.krew/bin \
+    $HOME/.gem/ruby/2.5.0/bin \
     /snap/bin
 
 # Install and bootstrap fisher packages

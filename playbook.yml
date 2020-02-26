@@ -11,3 +11,15 @@
     - {role: 'fish', tags: 'fish'}
     - {role: 'python-src', tags: 'python-src'}
     - {role: 'kubectl', tags: 'kubectl'}
+
+  tasks:
+    - name: Install ruby gems for jekyll
+      tags: ["jekyll"]
+      gem:
+        name: "{{ item }}"
+        user_install: true
+        state: present
+      loop:
+        - bundler
+        - jekyll
+

@@ -12,6 +12,8 @@
       - curl
       - fonts-powerline
       - jq
+      - ruby
+      - ruby-dev
     state: present
   become: yes
 
