@@ -10,6 +10,7 @@
     - {role: 'dropbox', tags: 'dropbox'}
     - {role: 'fish', tags: 'fish'}
     - {role: 'python-src', tags: 'python-src'}
+    - {role: 'docker', tags: 'docker'}
     - {role: 'kubectl', tags: 'kubectl'}
 
   tasks:
