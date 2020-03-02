@@ -4,12 +4,12 @@
     - {role: 'packages', tags: 'packages'}
     - {role: 'common', tags: 'common'}
     - {role: 'git', tags: 'git'}
+    - {role: 'fish', tags: 'fish'}
+    - {role: 'asdf', tags: 'asdf'}
     - {role: 'google-chrome', tags: 'chrome'}
     - {role: 'vscode', tags: 'vscode'}
     - {role: 'riot', tags: 'riot'}
     - {role: 'dropbox', tags: 'dropbox'}
-    - {role: 'fish', tags: 'fish'}
-    - {role: 'python-src', tags: 'python-src'}
     - {role: 'docker', tags: 'docker'}
     - {role: 'kubectl', tags: 'kubectl'}
 

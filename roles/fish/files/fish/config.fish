@@ -2,7 +2,6 @@
 set -x PATH $PATH \
     $HOME/bin/ \
     $HOME/.local/bin/ \
-    $HOME/opt/python/bin \
     $HOME/.krew/bin \
     $HOME/.gem/ruby/2.5.0/bin \
     /snap/bin
@@ -18,5 +17,8 @@ if not functions -q fisher
     curl https://git.io/fisher --create-dirs -sLo $XDG_CONFIG_HOME/fish/functions/fisher.fish
     fish -c fisher
 end
+
+# asdf-vm
+source ~/.asdf/asdf.fish
 
 starship init fish | source

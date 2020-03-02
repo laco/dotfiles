@@ -1,0 +1,53 @@
+---
+- name: "Clone asdf's repository if not present"
+  git:
+    repo: https://github.com/asdf-vm/asdf.git
+    dest: ~/.asdf
+    version:  v0.7.6
+
+- name: "Symlink fish completions for asdf"
+  file:
+    src: ~/.asdf/completions/asdf.fish
+    dest: ~/.config/fish/completions/asdf.fish
+    state: link
+
+- name: Add plugins for asdf
+  shell: |
+    asdf plugin add {{ item }}; or true
+    asdf plugin update {{ item }}
+  args:
+    executable: /usr/bin/fish
+  loop:
+    - python
+
+- name: Install versions for asdf
+  shell: |
+    asdf install {{item.plugin}} {{item.version}}
+  args:
+    executable: /usr/bin/fish
+  loop:
+    - {"plugin": "python", "version": 3.8.2 }
+
+- name: Set global versions for asdf
+  shell: |
+    asdf global {{item.plugin}} {{item.version}}
+  args:
+    executable: /usr/bin/fish
+  loop:
+    - {"plugin": "python", "version": 3.8.2 }
+
+- name: Install commonly used python packages
+  pip:
+    name:
+      - invoke
+      - poetry
+      - ansible
+      - openshift
+      - black
+    executable: ~/.asdf/shims/pip
+
+- name: asdf reshim
+  shell: asdf reshim
+  args:
+    executable: /usr/bin/fish
+

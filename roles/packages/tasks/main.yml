@@ -6,14 +6,29 @@
 - name: "Install common packages"
   apt:
     pkg:
-      - tree
-      - vim
-      - net-tools
+      - autoconf
+      - automake
       - curl
+      - dirmngr
       - fonts-powerline
+      - gpg
       - jq
+      - libbz2-dev
+      - libffi-dev
+      - libncurses-dev
+      - libreadline-dev
+      - libsqlite3-dev
+      - libssl-dev
+      - libtool
+      - libxslt-dev
+      - libyaml-dev
+      - net-tools
       - ruby
       - ruby-dev
+      - tree
+      - unixodbc-dev
+      - unzip
+      - vim
     state: present
   become: yes
 
