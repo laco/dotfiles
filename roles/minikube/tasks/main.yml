@@ -1,0 +1,13 @@
+- name: Install minikube deb package
+  shell: >-
+    curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube_{{ minikube_version }}_amd64.deb && \
+    dpkg -i minikube_{{ minikube_version }}_amd64.deb
+  args:
+    executable: /bin/bash
+    chdir: /tmp
+  become: yes
+  vars:
+    minikube_version: "1.8.1-0"
+
+- name: Set virtualbox as the default driver
+  shell: minikube config set driver virtualbox
