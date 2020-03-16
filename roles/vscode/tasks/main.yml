@@ -28,6 +28,7 @@
     - ms-azuretools.vscode-docker
     - humao.rest-client
     - brunnerh.insert-unicode
+    - 42crunch.vscode-openapi
  
 - name: Any new extension installed?
   debug:
