@@ -6,6 +6,9 @@ set -x PATH $PATH \
     $HOME/.gem/ruby/2.5.0/bin \
     /snap/bin
 
+# Enable docker buildx
+set DOCKER_CLI_EXPERIMENTAL enabled
+
 # Install Ruby gems to user home dir
 set GEM_HOME (ls -t -U | ruby -e 'puts Gem.user_dir')
 set BUNDLE_PATH $GEM_HOME
@@ -20,5 +23,8 @@ end
 
 # asdf-vm
 source ~/.asdf/asdf.fish
+
+# yaml2json
+alias yaml2json="ruby -ryaml -rjson -e 'puts JSON.pretty_generate(YAML.load(ARGF))'"
 
 starship init fish | source

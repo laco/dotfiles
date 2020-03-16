@@ -1,7 +1,7 @@
 function l-minikube-start -d 'Start minikube cluster'
     minikube start \
     --memory=16g \
-    --cpus=2 \
+    --cpus=4 \
     --dns-proxy=true \
     --driver=virtualbox \
     --kubernetes-version=v1.17.3 \
