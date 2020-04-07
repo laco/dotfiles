@@ -26,3 +26,10 @@
         - bundler
         - jekyll
 
+    - name: Install minio client(mc)
+      tags: ["minio", "mc"]
+      get_url:
+        url: https://dl.min.io/client/mc/release/linux-amd64/mc
+        dest: ~/bin/mc
+        mode: "0755"
+
