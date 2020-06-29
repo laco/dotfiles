@@ -8,5 +8,9 @@
       "zenMode.fullScreen": false,
       "workbench.colorTheme": "Sunburst",
       "files.trimTrailingWhitespace": true,
-      "[python]": {}
+      "[python]": {},
+      "timeline.excludeSources": [
+        "git-history"
+      ],
+      "yaml.schemaStore.enable": false
 }
