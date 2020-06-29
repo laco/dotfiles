@@ -14,7 +14,7 @@
     - {role: 'kubectl', tags: 'kubectl'}
     - {role: 'virtualbox', tags: 'virtualbox'}
     - {role: 'minikube', tags: 'minikube'}
-
+    - {role: 'terraform', tags: 'terraform'}
   tasks:
     - name: Install ruby gems for jekyll
       tags: ["jekyll"]

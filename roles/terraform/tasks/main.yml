@@ -1,0 +1,10 @@
+- name: Download terraform executable
+  unarchive:
+    src: "https://releases.hashicorp.com/terraform/0.12.28/terraform_0.12.28_linux_amd64.zip"
+    dest: ~/bin
+    remote_src: yes
+
+- name: Change terraform file permissions
+  file:
+    path: ~/bin/terraform
+    mode: '0755'
